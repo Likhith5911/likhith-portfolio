@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Likhith D Kunder — Content Writer & Scriptwriter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f4f0e8;
+    --accent: #c45c2a;
+    --muted: #6b6355;
+    --border: #d6cfc2;
+    --card: #edeae0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(244,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 4rem 5rem; position: relative; overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif; font-size: clamp(8rem, 18vw, 22rem);
+    font-weight: 700; color: transparent; -webkit-text-stroke: 1px rgba(196,92,42,0.07);
+    white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -0.02em;
+  }
+  .hero-label {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 0.4rem;
+  }
+  .hero-name em { font-style: italic; color: var(--accent); }
+  .hero-tagline {
+    font-size: 1.1rem; color: var(--muted); font-weight: 300;
+    max-width: 520px; margin-bottom: 3rem; min-height: 1.9em;
+  }
+  .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.75rem 2rem;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.25s; border-radius: 2px;
+  }
+  .btn-primary { background: var(--accent); color: var(--paper); border: 1.5px solid var(--accent); }
+  .btn-primary:hover { background: #a8481e; border-color: #a8481e; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; right: 4rem;
+    font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); writing-mode: vertical-rl; display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-scroll::after { content: ''; width: 1px; height: 50px; background: var(--muted); }
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1rem;
+  }
+  #about { background: var(--ink); color: var(--paper); }
+  #about .section-label { color: #c45c2a; }
+  #about .section-label::before { background: #c45c2a; }
+  #about .section-title { color: var(--paper); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
+  .about-body { font-size: 1.05rem; line-height: 1.9; color: #b8b0a0; font-weight: 300; }
+  .about-body p + p { margin-top: 1.2rem; }
+  .niches { margin-top: 2.5rem; }
+  .niche-item {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em;
+    color: #8a8070; transition: color 0.2s;
+  }
+  .niche-item:hover { color: var(--paper); }
+  .niche-num { color: var(--accent); font-size: 0.65rem; }
+  #work { background: var(--paper); }
+  .work-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 2rem 0 3rem; }
+  .filter-btn {
+    padding: 0.4rem 1.2rem; font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border);
+    background: transparent; color: var(--muted); cursor: pointer; border-radius: 2px; transition: all 0.2s;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+  .work-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    padding: 2rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .work-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .work-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--accent); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s;
+  }
+  .work-card:hover::before { transform: scaleY(1); }
+  .work-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+  .work-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.7rem; color: var(--ink); }
+  .work-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .work-link {
+    display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.2rem;
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); text-decoration: none; transition: gap 0.2s;
+  }
+  .work-link:hover { gap: 0.7rem; }
+  .work-card.hidden { display: none; }
+  #experience { background: var(--card); }
+  .timeline { margin-top: 3rem; position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+  .timeline-item { position: relative; margin-bottom: 3rem; padding-left: 2rem; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2.35rem; top: 5px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--accent);
+  }
+  .timeline-date { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); margin-bottom: 0.4rem; }
+  .timeline-role { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .timeline-org { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.7rem; }
+  .timeline-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+  #contact { background: var(--ink); color: var(--paper); text-align: center; }
+  #contact .section-label { justify-content: center; color: #c45c2a; }
+  #contact .section-label::before { background: #c45c2a; }
+  #contact .section-title { color: var(--paper); }
+  .contact-sub { color: #8a8070; font-size: 1rem; margin-bottom: 3rem; font-weight: 300; line-height: 1.8; }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 1.8rem;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; transition: all 0.2s;
+  }
+  .cl-email { background: var(--accent); color: var(--paper); }
+  .cl-email:hover { background: #a8481e; transform: translateY(-2px); }
+  .cl-phone { border: 1px solid rgba(255,255,255,0.15); color: var(--paper); }
+  .cl-phone:hover { border-color: var(--paper); transform: translateY(-2px); }
+  .cl-port { border: 1px solid rgba(255,255,255,0.15); color: var(--paper); }
+  .cl-port:hover { border-color: var(--paper); transform: translateY(-2px); }
+  footer {
+    background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #3a342c; letter-spacing: 0.08em; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.65rem; }
+    section, #hero { padding: 4rem 1.5rem; }
+    #hero { padding-bottom: 4rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .hero-scroll { display: none; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">LDK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-text">WRITE</div>
+  <p class="hero-label">Content Writer &amp; Scriptwriter</p>
+  <h1 class="hero-name">Likhith <em>D</em><br>Kunder</h1>
+  <p class="hero-tagline" id="tagline"></p>
+  <div class="hero-cta">
+    <a href="#work" class="btn btn-primary">View My Work</a>
+    <a href="mailto:likhith200315@gmail.com" class="btn btn-outline">Hire Me</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<section id="about">
+  <p class="section-label reveal">About</p>
+  <h2 class="section-title reveal">I write things<br><em style="font-style:italic;color:#c45c2a">worth reading.</em></h2>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I'm a freelance content writer and scriptwriter based in India. I specialise in research-driven storytelling, the kind that takes a dense, complicated topic and makes it feel urgent and human.</p>
+      <p>My work spans YouTube documentary scripts, short-form reel content, investigative journalism, travel writing, and personal essays. I've covered geopolitics, banking fraud, internet mysteries, energy crises, and the places in between.</p>
+      <p>If you need someone who can find the story inside a government report, a financial scandal, or a travel destination, that's what I do.</p>
+    </div>
+    <div class="niches reveal">
+      <div class="niche-item"><span class="niche-num">01</span> YouTube Documentary Scripts</div>
+      <div class="niche-item"><span class="niche-num">02</span> Short-Form Reel &amp; Shorts Scripts</div>
+      <div class="niche-item"><span class="niche-num">03</span> Investigative &amp; News Writing</div>
+      <div class="niche-item"><span class="niche-num">04</span> Geopolitics &amp; Finance Storytelling</div>
+      <div class="niche-item"><span class="niche-num">05</span> Travel &amp; Lifestyle Blog Writing</div>
+      <div class="niche-item"><span class="niche-num">06</span> Personal Essays &amp; Reflections</div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <p class="section-label reveal">Portfolio</p>
+  <h2 class="section-title reveal">Selected Work</h2>
+  <div class="work-filters reveal">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="documentary">Documentary</button>
+    <button class="filter-btn" data-filter="reel">Reel Scripts</button>
+    <button class="filter-btn" data-filter="investigative">Investigative</button>
+    <button class="filter-btn" data-filter="blog">Blog &amp; Essays</button>
+  </div>
+  <div class="work-grid">
+    <div class="work-card reveal" data-cat="documentary">
+      <p class="work-tag">Documentary Script · Geopolitics</p>
+      <h3 class="work-title">The Indian Ocean's $50 Billion Trap</h3>
+      <p class="work-desc">How Sri Lanka's debt crisis became the frontline of China and India's battle for control of the Indian Ocean — and what it means for the region.</p>
+      <a href="https://drive.google.com/file/d/1R0tQJaLFXetGmIhN32o9UlX9P3KNSUJ2/view?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="documentary">
+      <p class="work-tag">Documentary Script · Mystery / ARG</p>
+      <h3 class="work-title">The Night That Never Ended: The Sun Vanished</h3>
+      <p class="work-desc">A 7+ minute YouTube script with full production timeline, visual direction, SFX notes, and deep lore breakdown of one of the internet's most acclaimed ARG series.</p>
+      <a href="https://docs.google.com/document/d/1-im5RK4_h_kfGRGT2oeZpc9AHo17aCqy_zSuVI-_xH8/edit?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="reel">
+      <p class="work-tag">Reel Script · Economics / Tech</p>
+      <h3 class="work-title">The $10 Trillion Semiconductor Gamble</h3>
+      <p class="work-desc">Taiwan produces 92% of the world's advanced chips. A short-form educational script breaking down what a conflict could mean for the global economy.</p>
+      <a href="https://drive.google.com/file/d/1uNEH_ZkGZABWyQkLHxnh1--w4UmGLJ8Y/view?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="reel">
+      <p class="work-tag">Reel Script · Current Affairs</p>
+      <h3 class="work-title">The Reality of India's AI Summit</h3>
+      <p class="work-desc">A sharp commentary reel script critiquing India's AI governance ambitions, the US rejection of global AI oversight, and the country's compute gap.</p>
+      <a href="https://drive.google.com/file/d/1kI0cHd_huCIzVHvgL48ZCObV6BpXbKWh/view?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="investigative">
+      <p class="work-tag">Investigative Script · Finance</p>
+      <h3 class="work-title">The IDFC First Family Scam</h3>
+      <p class="work-desc">Inside a ₹590 crore banking fraud involving government funds and internal bank officials — researched, structured, and scripted for video.</p>
+      <a href="https://drive.google.com/file/d/14EAXOMFD4hCbfFvT-L39G37wJEgOp-kO/view?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="investigative">
+      <p class="work-tag">News Script · Energy Crisis</p>
+      <h3 class="work-title">India's Restaurants Are Running Out of Gas</h3>
+      <p class="work-desc">How a disruption near the Strait of Hormuz is threatening India's LPG supply — and what it means for millions of small restaurant owners.</p>
+      <a href="https://docs.google.com/document/d/1zK72f4976JqzYTEKphjVg7lquSYfM-ySSQ8iOEcGZks/edit?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="blog">
+      <p class="work-tag">Travel Blog · Lifestyle</p>
+      <h3 class="work-title">Coorg — India's Best Kept Secret</h3>
+      <p class="work-desc">A long-form destination guide to Karnataka's most beloved hill district — blending personal narrative, local insights, and practical travel tips.</p>
+      <a href="https://docs.google.com/document/d/1ibId2OREcR-F1cgaMePlkVnAMj4EcXxZ/edit?usp=sharing" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="blog">
+      <p class="work-tag">Travel Blog · Personal Story</p>
+      <h3 class="work-title">Five Idiots and a Dented Car — Pondicherry</h3>
+      <p class="work-desc">A humorous, chaotic personal travel story of five friends, a rental car scratch, quicksand, beer at a state border checkpoint, and one bed for five people in Auroville.</p>
+      <a href="https://docs.google.com/document/d/1a-Y4ksJuiLr_YQeB4ywzun6eBY1WP7Py/edit?usp=drive_link" class="work-link" target="_blank">Read Sample →</a>
+    </div>
+    <div class="work-card reveal" data-cat="blog">
+      <p class="work-tag">Personal Essay · Medium</p>
+      <h3 class="work-title">The Responsibility of Friendship</h3>
+      <p class="work-desc">A reflection on maturity, boundaries, and what it really means to show up for the people you care about.</p>
+      <a href="https://docs.google.com/document/d/1R9qPiLzmXCfoY3uLwsW0GF7yErX8W-WJ3V0qWu8meFg/edit?usp=sharing" class="work-link" target="_blank">Read Article →</a>
+    </div>
+    <div class="work-card reveal" data-cat="blog">
+      <p class="work-tag">Personal Essay · Medium</p>
+      <h3 class="work-title">What the Whale Made Me Feel</h3>
+      <p class="work-desc">A film analysis of Darren Aronofsky's The Whale — exploring guilt, emotional avoidance, and what it means to want to be seen before it's too late.</p>
+      <a href="https://docs.google.com/document/d/1A3UdoaQZmt9fHenCsIMyJ46xtBGfNxZ9sItMvTWCIjk/edit?usp=sharing" class="work-link" target="_blank">Read Article →</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label reveal">Experience</p>
+  <h2 class="section-title reveal">Where I've Worked</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <p class="timeline-date">Jan 2025 — Present</p>
+      <p class="timeline-role">Contributing Writer</p>
+      <p class="timeline-org">News &amp; Medium</p>
+      <p class="timeline-desc">Publishing investigative articles on geopolitics, energy crises, and financial fraud. Writing long-form essays on digital culture, personal reflection, and financial literacy for a general audience.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <p class="timeline-date">Mar 2025 — Present</p>
+      <p class="timeline-role">Freelance Scriptwriter</p>
+      <p class="timeline-org">YouTube &amp; Digital Media</p>
+      <p class="timeline-desc">Production-ready scripts for Horror, ARG, and current affairs YouTube channels. Short-form reel scripts for social media creators. Research-heavy documentary scripts on geopolitics, banking fraud, and energy crises.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Let's Work<br><em style="font-style:italic">Together.</em></h2>
+  <p class="contact-sub">Open to freelance projects, long-term clients, and collaborations.<br>Scripts, articles, investigative pieces — let's talk.</p>
+  <div class="contact-links">
+    <a href="mailto:likhith200315@gmail.com" class="contact-link cl-email">✉ likhith200315@gmail.com</a>
+    <a href="tel:+919019103254" class="contact-link cl-phone">✆ +91 90191 03254</a>
+    <a href="https://likhith5911.github.io/likhith-portfolio/" target="_blank" class="contact-link cl-port">↗ Portfolio</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Likhith D Kunder</p>
+  <p>Content Writer · Scriptwriter · India</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.work-card').forEach(c => {
+      c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f);
+    });
+  });
+});
+
+const lines = [
+  "Turning complex topics into stories people actually finish reading.",
+  "Scripts, articles, and essays — research-driven.",
+  "Geopolitics. Finance. Mystery. Travel. Essays.",
+];
+let li = 0, ci = 0, del = false;
+const el = document.getElementById('tagline');
+function type() {
+  const cur = lines[li];
+  if (!del) {
+    el.textContent = cur.slice(0, ++ci);
+    if (ci === cur.length) { del = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = cur.slice(0, --ci);
+    if (ci === 0) { del = false; li = (li + 1) % lines.length; }
+  }
+  setTimeout(type, del ? 40 : 60);
+}
+type();
+</script>
+</body>
+</html>
