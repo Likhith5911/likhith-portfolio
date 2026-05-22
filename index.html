@@ -1,922 +1,1314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Likhith D Kunder — Documentary Scriptwriter</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Likhith D Kunder — Full Stack Engineer & Creative Developer</title>
+  <meta name="description" content="Portfolio of Likhith D Kunder — Full Stack Engineer specializing in interactive web experiences, documentary storytelling, and creative development.">
+  <meta name="keywords" content="Full Stack Engineer, Web Developer, Creative Developer, React, Node.js, Portfolio">
+  <meta name="author" content="Likhith D Kunder">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Likhith D Kunder — Full Stack Engineer">
+  <meta property="og:description" content="Interactive portfolio showcasing web development and creative engineering projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://likhithk15.github.io">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Likhith D Kunder — Full Stack Engineer">
+  <meta name="twitter:description" content="Building immersive web experiences with modern technologies.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-/* ─── TOKENS ─── */
-:root {
-  --white:   #fafaf8;
-  --off:     #f3f1ec;
-  --rule:    #d8d4cc;
-  --muted:   #9a9488;
-  --body:    #2c2a25;
-  --head:    #141210;
-  --red:     #c8391a;
-  --mono:    'IBM Plex Mono', monospace;
-  --serif:   'EB Garamond', Georgia, serif;
-}
-
-/* ─── RESET ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 18px; }
-body {
-  background: var(--white);
-  color: var(--body);
-  font-family: var(--serif);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-/* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.1rem 3.5rem;
-  background: rgba(250,250,248,0.96);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--rule);
-}
-.nav-name {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--head);
-  text-decoration: none;
-  letter-spacing: 0.01em;
-}
-.nav-links {
-  display: flex;
-  gap: 2.25rem;
-  list-style: none;
-}
-.nav-links a {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--red); }
-
-/* ─── HERO ─── */
-#hero {
-  padding: 14rem 3.5rem 6rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.hero-kicker {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 2rem;
-}
-.hero-kicker span {
-  color: var(--red);
-  margin-right: 0.75rem;
-}
-.hero-name {
-  font-family: var(--serif);
-  font-size: clamp(3.2rem, 7vw, 6.5rem);
-  font-weight: 400;
-  line-height: 1.05;
-  color: var(--head);
-  letter-spacing: -0.02em;
-  margin-bottom: 2rem;
-}
-.hero-name em {
-  font-style: italic;
-}
-.hero-desc {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  color: var(--body);
-  max-width: 560px;
-  line-height: 1.75;
-  margin-bottom: 3rem;
-}
-.hero-desc em { font-style: italic; color: var(--head); }
-.hero-ctas {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.cta-primary {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--head);
-  padding: 0.8rem 1.75rem;
-  text-decoration: none;
-  transition: background 0.15s;
-}
-.cta-primary:hover { background: var(--red); }
-.cta-secondary {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 1px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.cta-secondary:hover { color: var(--head); border-color: var(--head); }
-
-/* ─── DIVIDER ─── */
-.rule {
-  width: 100%;
-  height: 1px;
-  background: var(--rule);
-  margin: 0;
-}
-
-/* ─── SECTION WRAPPER ─── */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 5rem 3.5rem;
-}
-.section + .rule { }
-
-/* ─── SECTION LABEL ─── */
-.s-label {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.s-label::after {
-  content: '';
-  display: inline-block;
-  width: 2rem;
-  height: 1px;
-  background: var(--rule);
-}
-
-/* ─── ABOUT ─── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 5rem;
-  align-items: start;
-}
-.about-lede {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-style: italic;
-  color: var(--head);
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  border-left: 2px solid var(--red);
-  padding-left: 1.25rem;
-}
-.about-body p {
-  font-size: 1rem;
-  color: var(--body);
-  line-height: 1.8;
-  margin-bottom: 1.25rem;
-}
-.about-body strong { color: var(--head); font-weight: 500; }
-
-.aside-block { margin-bottom: 2.5rem; }
-.aside-label {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.9rem;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 0.6rem;
-}
-.aside-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.aside-list li {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  color: var(--body);
-  line-height: 1.5;
-  padding-left: 0.9rem;
-  position: relative;
-}
-.aside-list li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--red);
-  font-size: 1.1rem;
-  line-height: 1.3;
-}
-
-/* ─── WORK ─── */
-.work-intro {
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--muted);
-  font-style: italic;
-  max-width: 520px;
-  margin-bottom: 3rem;
-  line-height: 1.7;
-}
-
-.work-list {
-  display: flex;
-  flex-direction: column;
-}
-.work-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--rule);
-  align-items: start;
-  transition: background 0.15s;
-}
-.work-item:last-child { border-bottom: 1px solid var(--rule); }
-
-.wi-type {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-.wi-type .wi-cat {
-  color: var(--red);
-  margin-left: 0.5rem;
-}
-.wi-title {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--head);
-  line-height: 1.3;
-  margin-bottom: 0.6rem;
-}
-.wi-desc {
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  color: var(--body);
-  line-height: 1.7;
-  max-width: 600px;
-}
-.wi-link {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--red);
-  text-decoration: none;
-  white-space: nowrap;
-  padding-top: 0.2rem;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s;
-}
-.wi-link:hover { border-bottom-color: var(--red); }
-.wi-link::after { content: ' →'; }
-
-/* ─── CHANNEL BLOCK ─── */
-.channel-block {
-  margin-top: 4rem;
-  padding: 2.5rem;
-  background: var(--off);
-  border-left: 2px solid var(--head);
-}
-.ch-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  gap: 2rem;
-}
-.ch-label {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-.ch-name {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--head);
-  line-height: 1.2;
-}
-.ch-name em { font-style: italic; }
-.ch-desc {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  color: var(--body);
-  line-height: 1.7;
-  max-width: 560px;
-  margin-top: 0.75rem;
-}
-.ch-count {
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  font-weight: 400;
-  color: var(--head);
-  text-align: right;
-  line-height: 1;
-  white-space: nowrap;
-}
-.ch-count-lbl {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: right;
-  margin-top: 0.3rem;
-}
-.ch-scripts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-}
-.ch-script-num {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-.ch-script-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--head);
-  margin-bottom: 0.4rem;
-  line-height: 1.35;
-}
-.ch-script-desc {
-  font-family: var(--serif);
-  font-size: 0.88rem;
-  color: var(--body);
-  line-height: 1.65;
-}
-
-/* ─── PROCESS ─── */
-.process-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.process-item {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 2rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--rule);
-}
-.process-item:last-child { border-bottom: 1px solid var(--rule); }
-.p-n {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  padding-top: 0.15rem;
-}
-.p-title {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--head);
-  margin-bottom: 0.4rem;
-}
-.p-text {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  color: var(--body);
-  line-height: 1.75;
-  max-width: 600px;
-}
-
-/* ─── EXPERIENCE ─── */
-.exp-list { display: flex; flex-direction: column; }
-.exp-item {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 2.5rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--rule);
-}
-.exp-item:last-child { border-bottom: 1px solid var(--rule); }
-.exp-period {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  line-height: 1.6;
-  padding-top: 0.15rem;
-}
-.exp-role {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--head);
-  margin-bottom: 0.2rem;
-}
-.exp-org {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 0.8rem;
-}
-.exp-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.exp-items li {
-  font-family: var(--serif);
-  font-size: 0.93rem;
-  color: var(--body);
-  line-height: 1.65;
-  padding-left: 1rem;
-  position: relative;
-}
-.exp-items li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-/* ─── CONTACT ─── */
-#contact-section {
-  background: var(--head);
-}
-#contact-section .section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
-}
-#contact-section .s-label { color: rgba(255,255,255,0.3); }
-#contact-section .s-label::after { background: rgba(255,255,255,0.1); }
-.contact-head {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--white);
-  margin-bottom: 1.25rem;
-}
-.contact-head em { font-style: italic; }
-.contact-note {
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: rgba(255,255,255,0.5);
-  font-style: italic;
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-.contact-for-lbl {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding-bottom: 0.5rem;
-}
-.contact-for-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.contact-for-list li {
-  font-family: var(--serif);
-  font-size: 0.93rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.55;
-  padding-left: 0.9rem;
-  position: relative;
-}
-.contact-for-list li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--red);
-  font-size: 1.1rem;
-  line-height: 1.3;
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-}
-.c-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.35rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  text-decoration: none;
-  transition: padding-left 0.15s;
-}
-.c-link:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
-.c-link:hover { padding-left: 0.4rem; }
-.c-link:hover .c-arrow { transform: translateX(4px); }
-.c-link-lbl {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 0.2rem;
-}
-.c-link-val {
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--white);
-}
-.c-arrow {
-  color: var(--red);
-  font-size: 1rem;
-  transition: transform 0.15s;
-}
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--head);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 1.5rem 3.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.f-copy {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.25);
-}
-.f-tag {
-  font-family: var(--serif);
-  font-size: 0.88rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.25);
-}
-
-/* ─── REVEALS ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 860px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { gap: 1.5rem; }
-  #hero { padding: 10rem 1.5rem 4rem; }
-  .section { padding: 4rem 1.5rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .work-item { grid-template-columns: 1fr; gap: 0.75rem; }
-  .ch-top { flex-direction: column; }
-  .ch-scripts { grid-template-columns: 1fr; gap: 1.25rem; }
-  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-  #contact-section .section { grid-template-columns: 1fr; gap: 3rem; }
-  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.25rem 1.5rem; }
-}
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-name">Likhith D Kunder</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<div id="hero">
-  <p class="hero-kicker"><span>●</span> Available for collaboration · India, remote worldwide</p>
-  <h1 class="hero-name">Likhith D Kunder</h1>
-  <p class="hero-desc">
-    Research-driven scripts for YouTube documentaries on geopolitics, banking fraud, infrastructure, and internet culture. Built to hold an audience, not just inform one.
-  </p>
-  <div class="hero-ctas">
-    <a href="#work" class="cta-primary">View Scripts</a>
-    <a href="mailto:likhith200315@gmail.com" class="cta-secondary">Get in touch</a>
-  </div>
-</div>
-
-<div class="rule"></div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section">
-    <div class="s-label">About</div>
-    <div class="about-grid reveal">
-      <div class="about-body">
-        <p class="about-lede">"The story is always inside the material. My job is to find it and make the audience feel it before they understand it."</p>
-        <p>I'm a freelance <strong>documentary scriptwriter</strong> specialising in investigative long-form video. My work sits at the intersection of primary research, systems thinking, and narrative structure built for retention — not just comprehension.</p>
-        <p>I've written on Sri Lanka's debt crisis, a ₹590 crore banking fraud, India's LPG supply chain, semiconductor geopolitics, and the racial anxiety behind one of America's fastest-growing suburbs. If there's a system failing, a power shifting, or a real story buried in a government report — I find the angle that makes someone stay.</p>
-        <p>I also write <strong>personal essay scripts</strong> for creators building audiences around lived experience  confessional, specific, and deliberately unpolished where polish would cost authenticity.</p>
-      </div>
-      <div>
-        <div class="aside-block">
-          <div class="aside-label">Best For</div>
-          <ul class="aside-list">
-            <li>Documentary &amp; video essay channels</li>
-            <li>Geopolitics &amp; economics creators</li>
-            <li>Investigative / scam / finance content</li>
-            <li>Internet culture &amp; ARG breakdowns</li>
-            <li>Personal growth &amp; authentic storytelling</li>
-          </ul>
-        </div>
-        <div class="aside-block">
-          <div class="aside-label">Services</div>
-          <ul class="aside-list">
-            <li>YouTube Documentary Scripts</li>
-            <li>Personal Essay Scripts</li>
-            <li>Investigative &amp; News Writing</li>
-            <li>Short-Form Reel Scripts</li>
-            <li>Podcast &amp; Interview Scripts</li>
-            <li>Blog &amp; Long-Form Essays</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="rule"></div>
-
-<!-- WORK -->
-<section id="work">
-  <div class="section">
-    <div class="s-label">Featured Scripts</div>
-    <p class="work-intro">Five pieces that show range across form and register each built around a thesis, not a topic summary.</p>
-
-    <div class="work-list reveal">
-
-      <div class="work-item">
-        <div>
-          <div class="wi-type">Documentary <span class="wi-cat">Geopolitics</span></div>
-          <div class="wi-title">The Indian Ocean's $50 Billion Trap</div>
-          <div class="wi-desc">How Sri Lanka's debt crisis became the frontline of China and India's battle for control of the Indian Ocean. Built on multilayered geopolitical research — debt-trap dynamics, port strategy, regional power shifts — structured for maximum narrative escalation.</div>
-        </div>
-        <a class="wi-link" href="https://drive.google.com/file/d/1R0tQJaLFXetGmIhN32o9UlX9P3KNSUJ2/view?usp=sharing" target="_blank" rel="noopener">Read</a>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="wi-type">Investigative <span class="wi-cat">Finance &amp; Fraud</span></div>
-          <div class="wi-title">The IDFC First Family Scam</div>
-          <div class="wi-desc">Inside a ₹590 crore banking fraud involving government funds and internal bank officials. Full source documentation, narrative structured around institutional failure and human culpability — without sacrificing investigative rigour.</div>
-        </div>
-        <a class="wi-link" href="https://drive.google.com/file/d/14EAXOMFD4hCbfFvT-L39G37wJEgOp-kO/view?usp=sharing" target="_blank" rel="noopener">Read</a>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="wi-type">Investigative <span class="wi-cat">Immigration</span></div>
-          <div class="wi-title">Frisco, Texas — The 'Indian' City Causing Anxiety</div>
-          <div class="wi-desc">Named one of America's safest cities two years running. So why are people showing up to city council meetings in Punisher masks? A script on racial anxiety, demographic shift, and the question America keeps avoiding.</div>
-        </div>
-        <a class="wi-link" href="https://docs.google.com/document/d/1p3vRm1J1ryMD0csIA6ukDuJ02W4yMcffJncKSWr2bBg/edit?usp=sharing" target="_blank" rel="noopener">Read</a>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="wi-type">Documentary <span class="wi-cat">Mystery / ARG</span></div>
-          <div class="wi-title">The Night That Never Ended: The Sun Vanished</div>
-          <div class="wi-desc">A 7+ minute script with production timeline, visual direction, and SFX cue notes deep lore breakdown of one of the internet's most acclaimed ARG series. Same research depth, completely different emotional register.</div>
-        </div>
-        <a class="wi-link" href="https://docs.google.com/document/d/1-im5RK4_h_kfGRGT2oeZpc9AHo17aCqy_zSuVI-_xH8/edit?usp=sharing" target="_blank" rel="noopener">Read</a>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="wi-type">Documentary <span class="wi-cat">Geopolitics</span></div>
-          <div class="wi-title">India's Quiet Global Integration</div>
-          <div class="wi-desc">Churchill called India the jewel of the British Empire. Today the building where he planned the Second World War is owned by an Indian company. A documentary script tracing how India has been quietly buying back the world — one acquisition at a time.</div>
-        </div>
-        <a class="wi-link" href="https://docs.google.com/document/d/1c_81ASiIsQCUSpVr-qxkLXaWP3zxTaxO/edit?usp=sharing" target="_blank" rel="noopener">Read</a>
-      </div>
-
-    </div>
-
-    <!-- CHANNEL BLOCK -->
-    <div class="channel-block reveal">
-      <div class="ch-top">
-        <div>
-          <div class="ch-label">Ongoing Collaboration</div>
-          <div class="ch-name">No <em>Guidebook</em></div>
-          <div class="ch-desc">An active scriptwriting partnership for a personal growth YouTube channel. Every script is built from the creator's real experiences four months unemployed, a newborn at home, accent insecurity, the slow process of showing up anyway.</div>
-        </div>
-        <div>
-          <div class="ch-count">8+</div>
-          <div class="ch-count-lbl">Scripts Delivered</div>
-        </div>
-      </div>
-      <div class="ch-scripts">
-        <div>
-          <div class="ch-script-num">Script 01</div>
-          <div class="ch-script-title">Why I Kept Deleting My Videos</div>
-          <div class="ch-script-desc">On accent insecurity and the version of yourself you keep erasing before anyone else gets to see it.</div>
-        </div>
-        <div>
-          <div class="ch-script-num">Script 02</div>
-          <div class="ch-script-title">The Art of Being Disciplined Anyway</div>
-          <div class="ch-script-desc">The real distinction between motivation (a feeling) and discipline (a decision made before the feeling arrives).</div>
-        </div>
-        <div>
-          <div class="ch-script-num">Script 08</div>
-          <div class="ch-script-title">The Version We're Waiting For</div>
-          <div class="ch-script-desc">On the future self we keep stalling for anchored by Kierkegaard's backwards-forwards observation.</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="rule"></div>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="section">
-    <div class="s-label">How I Work</div>
-    <div class="process-list reveal">
-      <div class="process-item">
-        <div class="p-n">01</div>
-        <div>
-          <div class="p-title">Research before everything</div>
-          <div class="p-text">Government reports, academic papers, financial filings not just Wikipedia. Every claim is traceable. The script's authority comes from the research, not the narration style.</div>
-        </div>
-      </div>
-      <div class="process-item">
-        <div class="p-n">02</div>
-        <div>
-          <div class="p-title">Thesis before draft</div>
-          <div class="p-text">A documentary isn't a summary of a topic. It's an argument about one. Before writing a word, I identify the central tension the thing that makes an audience feel the stakes personally.</div>
-        </div>
-      </div>
-      <div class="process-item">
-        <div class="p-n">03</div>
-        <div>
-          <div class="p-title">Structure built for retention</div>
-          <div class="p-text">Good hooks. Escalating stakes. Deliberate pacing. Every section earns the next. The goal is a script where the editor has to fight the urge to keep watching while cutting.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="rule"></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section">
-    <div class="s-label">Experience</div>
-    <div class="exp-list reveal">
-      <div class="exp-item">
-        <div class="exp-period">Jan 2026 — Present</div>
-        <div>
-          <div class="exp-role">Scriptwriter — No Guidebook</div>
-          <div class="exp-org">YouTube Personal Growth Channel · Ongoing</div>
-          <ul class="exp-items">
-            <li>Writing all scripts for an active personal essay YouTube channel (8+ scripts, ongoing)</li>
-            <li>Confessional, autobiographical video essays built around the creator's real experiences</li>
-            <li>Developing a consistent editorial voice across the channel's entire content arc</li>
-          </ul>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-period">Jan 2026 — Present</div>
-        <div>
-          <div class="exp-role">Freelance Investigative Documentary Scriptwriter</div>
-          <div class="exp-org">YouTube &amp; Digital Media · Remote</div>
-          <ul class="exp-items">
-            <li>Production-ready scripts for documentary, investigative, ARG, and current affairs channels</li>
-            <li>Long-form scripts on geopolitics, banking fraud, immigration, and energy crises</li>
-            <li>Short-form reel scripts for social media creators and brand clients</li>
-          </ul>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-period">Oct 2025 — Present</div>
-        <div>
-          <div class="exp-role">Contributing Writer</div>
-          <div class="exp-org">News &amp; Digital Publications</div>
-          <ul class="exp-items">
-            <li>Investigative articles on geopolitics, energy crises, and financial fraud</li>
-            <li>Long-form essays on digital culture, personal reflection, and financial literacy</li>
-            <li>Research-driven news scripts for digital-first audiences</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<div id="contact-section">
-  <div id="contact" class="section">
-    <div>
-      <div class="s-label">Get In Touch</div>
-      <h2 class="contact-head">Let's build<br><em>something real.</em></h2>
-      <p class="contact-note">Open to freelance projects, long-term channel partnerships, and ongoing collaborations. I work best with creators who want depth.</p>
-      <div class="contact-for-lbl">Best suited for</div>
-      <ul class="contact-for-list">
-        <li>Documentary channels geopolitics, economics, scams, infrastructure</li>
-        <li>Investigative creators who need sourced, argument-led scripts</li>
-        <li>Personal essay channels built around authentic experience</li>
-        <li>Video essayists culture, internet history, mystery</li>
-      </ul>
-    </div>
-    <div class="contact-links reveal">
-      <a href="mailto:likhith200315@gmail.com" class="c-link">
-        <div>
-          <div class="c-link-lbl">Email</div>
-          <div class="c-link-val">likhith200315@gmail.com</div>
-        </div>
-        <span class="c-arrow">→</span>
-      </a>
-      <a href="tel:+919019103254" class="c-link">
-        <div>
-          <div class="c-link-lbl">Phone / WhatsApp</div>
-          <div class="c-link-val">+91 90191 03254</div>
-        </div>
-        <span class="c-arrow">→</span>
-      </a>
-      <a href="https://likhithk15.github.io/likhith-portfolio/" class="c-link" target="_blank" rel="noopener">
-        <div>
-          <div class="c-link-lbl">Portfolio (GitHub)</div>
-          <div class="c-link-val">likhithk15.github.io</div>
-        </div>
-        <span class="c-arrow">→</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <span class="f-copy">© 2026 Likhith D Kunder</span>
-  <span class="f-tag">Documentary Scriptwriter</span>
-</footer>
-
-<script>
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), i * 80);
-      io.unobserve(e.target);
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            dark: {
+              bg: '#0a0a0f',
+              surface: '#12121a',
+              elevated: '#1a1a25',
+              border: '#2a2a35',
+            },
+            light: {
+              bg: '#fafaf8',
+              surface: '#ffffff',
+              elevated: '#f3f1ec',
+              border: '#e5e5e0',
+            },
+            accent: {
+              primary: '#6366f1',
+              secondary: '#a855f7',
+              glow: '#818cf8',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
     }
-  });
-}, { threshold: 0.05 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+  </script>
+
+  <style>
+    /* ─── CSS VARIABLES & THEME ─── */
+    :root {
+      --cursor-size: 20px;
+      --cursor-hover-size: 60px;
+    }
+
+    .dark {
+      color-scheme: dark;
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+    .custom-cursor {
+      position: fixed;
+      width: var(--cursor-size);
+      height: var(--cursor-size);
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      color: white;
+    }
+
+    .custom-cursor.hovering {
+      width: var(--cursor-hover-size);
+      height: var(--cursor-hover-size);
+      background: rgba(99, 102, 241, 0.15);
+      border-color: #6366f1;
+    }
+
+    .custom-cursor.clicking {
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    /* Hide default cursor on desktop */
+    @media (pointer: fine) {
+      * { cursor: none !important; }
+    }
+
+    /* ─── NOISE TEXTURE ─── */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── GLASSMORPHISM ─── */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dark .glass {
+      background: rgba(18, 18, 26, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* ─── HERO TEXT SPLIT ANIMATION ─── */
+    .char {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+
+    .word {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    /* ─── PROJECT CARD FLIP ─── */
+    .project-card {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+
+    .project-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .project-card:hover .project-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .project-card-front,
+    .project-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .project-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #6366f1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #818cf8;
+    }
+
+    /* ─── MAGNETIC BUTTON ─── */
+    .magnetic-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── GRADIENT TEXT ─── */
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── PARTICLE CANVAS ─── */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── LOADING SCREEN ─── */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0f;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #6366f1;
+      letter-spacing: 0.2em;
+    }
+
+    /* ─── SECTION REVEAL ─── */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    /* ─── SKILL BAR ─── */
+    .skill-track {
+      position: relative;
+      height: 4px;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── FORM STYLES ─── */
+    .form-input {
+      background: transparent;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .dark .form-input {
+      color: white;
+    }
+
+    /* ─── PREFERS REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .custom-cursor {
+        display: none;
+      }
+    }
+
+    /* ─── MOBILE OPTIMIZATIONS ─── */
+    @media (max-width: 768px) {
+      .custom-cursor {
+        display: none;
+      }
+      
+      @media (pointer: fine) {
+        * { cursor: auto !important; }
+      }
+    }
+  </style>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-gray-100 font-body transition-colors duration-500 overflow-x-hidden">
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-12 h-12 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+      <span class="loader-text">INITIALIZING...</span>
+    </div>
+  </div>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise-overlay"></div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- THEME TOGGLE -->
+  <button id="theme-toggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform duration-300" aria-label="Toggle dark mode">
+    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+  </button>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-40 px-6 lg:px-12 py-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#hero" class="font-display font-bold text-xl tracking-tight magnetic-btn" data-cursor="hover">
+        LD<span class="text-indigo-500">K</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-indigo-500 transition-colors magnetic-btn" data-cursor="hover">About</a>
+        <a href="#projects" class="font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-indigo-500 transition-colors magnetic-btn" data-cursor="hover">Projects</a>
+        <a href="#skills" class="font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-indigo-500 transition-colors magnetic-btn" data-cursor="hover">Skills</a>
+        <a href="#contact" class="font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-indigo-500 transition-colors magnetic-btn" data-cursor="hover">Contact</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 z-30 bg-light-bg dark:bg-dark-bg transform translate-x-full transition-transform duration-500 md:hidden">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <a href="#about" class="font-display text-3xl mobile-menu-link">About</a>
+      <a href="#projects" class="font-display text-3xl mobile-menu-link">Projects</a>
+      <a href="#skills" class="font-display text-3xl mobile-menu-link">Skills</a>
+      <a href="#contact" class="font-display text-3xl mobile-menu-link">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 lg:px-12 pt-20">
+    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10">
+        <div class="mb-6 overflow-hidden">
+          <p class="hero-kicker font-mono text-sm text-indigo-500 tracking-widest uppercase opacity-0 translate-y-full">
+            Full Stack Engineer & Creative Developer
+          </p>
+        </div>
+        
+        <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight mb-8">
+          <span class="hero-line block overflow-hidden">
+            <span class="hero-text inline-block">Building</span>
+          </span>
+          <span class="hero-line block overflow-hidden">
+            <span class="hero-text inline-block gradient-text">Digital</span>
+          </span>
+          <span class="hero-line block overflow-hidden">
+            <span class="hero-text inline-block">Realities</span>
+          </span>
+        </h1>
+
+        <p class="hero-desc text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-lg mb-10 leading-relaxed opacity-0">
+          I craft immersive web experiences that merge technical precision with creative vision. From interactive documentaries to full-stack applications.
+        </p>
+
+        <div class="flex flex-wrap gap-4 hero-ctas opacity-0">
+          <a href="#projects" class="magnetic-btn px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-mono text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25" data-cursor="hover">
+            View Work
+          </a>
+          <a href="#contact" class="magnetic-btn px-8 py-4 border border-gray-300 dark:border-gray-700 hover:border-indigo-500 font-mono text-sm uppercase tracking-widest rounded-full transition-all duration-300" data-cursor="hover">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:block">
+        <div class="relative w-full aspect-square max-w-md mx-auto">
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div class="relative glass rounded-3xl p-8 animate-float">
+            <div class="font-mono text-xs text-gray-500 mb-4">current_status.json</div>
+            <pre class="font-mono text-sm leading-relaxed overflow-hidden"><code class="language-json">{
+  "name": "Likhith D Kunder",
+  "role": "Full Stack Engineer",
+  "location": "India / Remote",
+  "status": "Available",
+  "stack": [
+    "React", "Node.js", "TypeScript",
+    "Three.js", "GSAP", "Tailwind"
+  ],
+  "passion": "Interactive storytelling"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <i data-lucide="chevron-down" class="w-6 h-6 text-gray-400"></i>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="relative py-32 px-6 lg:px-12 reveal-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-4">
+          <p class="font-mono text-xs text-indigo-500 uppercase tracking-widest mb-4">01 — About</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight">
+            Code meets<br>
+            <span class="gradient-text">creativity</span>
+          </h2>
+        </div>
+        
+        <div class="lg:col-span-8 lg:pl-12">
+          <div class="space-y-6 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p class="about-text">
+              I'm a Full Stack Engineer with a background in documentary scriptwriting and investigative research. This unique combination allows me to approach technical problems with narrative thinking — every application tells a story, every interface guides an experience.
+            </p>
+            <p class="about-text">
+              My work spans from building scalable web applications to creating immersive interactive experiences. I specialize in React ecosystems, Node.js backends, and creative front-end animations using GSAP and Three.js.
+            </p>
+            <p class="about-text">
+              When I'm not coding, I'm researching geopolitics, writing documentary scripts, or exploring the intersection of technology and human behavior.
+            </p>
+          </div>
+
+          <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="stat-item">
+              <div class="font-display font-bold text-3xl md:text-4xl text-indigo-500">5+</div>
+              <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mt-1">Years Exp</div>
+            </div>
+            <div class="stat-item">
+              <div class="font-display font-bold text-3xl md:text-4xl text-indigo-500">50+</div>
+              <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mt-1">Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="font-display font-bold text-3xl md:text-4xl text-indigo-500">20+</div>
+              <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mt-1">Clients</div>
+            </div>
+            <div class="stat-item">
+              <div class="font-display font-bold text-3xl md:text-4xl text-indigo-500">∞</div>
+              <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mt-1">Curiosity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="relative py-32 px-6 lg:px-12 reveal-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        <div>
+          <p class="font-mono text-xs text-indigo-500 uppercase tracking-widest mb-4">02 — Selected Work</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl">Featured Projects</h2>
+        </div>
+        <p class="mt-4 md:mt-0 text-gray-500 dark:text-gray-400 max-w-md">
+          A curated selection of projects showcasing full-stack development, interactive experiences, and creative engineering.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="project-card h-96 group" data-cursor="hover">
+          <div class="project-card-inner">
+            <div class="project-card-front glass rounded-2xl p-6 flex flex-col">
+              <div class="flex-1 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl mb-4 flex items-center justify-center">
+                <i data-lucide="globe" class="w-16 h-16 text-indigo-500/50"></i>
+              </div>
+              <div class="font-mono text-xs text-indigo-500 uppercase tracking-wider mb-2">Geopolitics Platform</div>
+              <h3 class="font-display font-bold text-xl">OceanTrade Monitor</h3>
+              <p class="text-sm text-gray-500 mt-2">Real-time maritime trade visualization</p>
+            </div>
+            <div class="project-card-back glass rounded-2xl p-6 flex flex-col justify-center items-center text-center bg-indigo-600/10">
+              <h3 class="font-display font-bold text-xl mb-4">OceanTrade Monitor</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Interactive dashboard tracking global shipping routes and port congestion using real-time AIS data and machine learning predictions.</p>
+              <div class="flex flex-wrap gap-2 justify-center mb-6">
+                <span class="px-3 py-1 text-xs font-mono bg-indigo-500/20 rounded-full">React</span>
+                <span class="px-3 py-1 text-xs font-mono bg-indigo-500/20 rounded-full">D3.js</span>
+                <span class="px-3 py-1 text-xs font-mono bg-indigo-500/20 rounded-full">Node.js</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-indigo-500 font-mono text-sm hover:gap-4 transition-all">
+                View Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card h-96 group" data-cursor="hover">
+          <div class="project-card-inner">
+            <div class="project-card-front glass rounded-2xl p-6 flex flex-col">
+              <div class="flex-1 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl mb-4 flex items-center justify-center">
+                <i data-lucide="shield" class="w-16 h-16 text-purple-500/50"></i>
+              </div>
+              <div class="font-mono text-xs text-purple-500 uppercase tracking-wider mb-2">Security Tool</div>
+              <h3 class="font-display font-bold text-xl">FraudScope AI</h3>
+              <p class="text-sm text-gray-500 mt-2">Banking fraud detection system</p>
+            </div>
+            <div class="project-card-back glass rounded-2xl p-6 flex flex-col justify-center items-center text-center bg-purple-600/10">
+              <h3 class="font-display font-bold text-xl mb-4">FraudScope AI</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">ML-powered transaction monitoring platform that identifies anomalous patterns in real-time banking data with 99.2% accuracy.</p>
+              <div class="flex flex-wrap gap-2 justify-center mb-6">
+                <span class="px-3 py-1 text-xs font-mono bg-purple-500/20 rounded-full">Python</span>
+                <span class="px-3 py-1 text-xs font-mono bg-purple-500/20 rounded-full">TensorFlow</span>
+                <span class="px-3 py-1 text-xs font-mono bg-purple-500/20 rounded-full">FastAPI</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-purple-500 font-mono text-sm hover:gap-4 transition-all">
+                View Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card h-96 group" data-cursor="hover">
+          <div class="project-card-inner">
+            <div class="project-card-front glass rounded-2xl p-6 flex flex-col">
+              <div class="flex-1 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl mb-4 flex items-center justify-center">
+                <i data-lucide="pen-tool" class="w-16 h-16 text-emerald-500/50"></i>
+              </div>
+              <div class="font-mono text-xs text-emerald-500 uppercase tracking-wider mb-2">Creative Tool</div>
+              <h3 class="font-display font-bold text-xl">ScriptForge</h3>
+              <p class="text-sm text-gray-500 mt-2">Collaborative scriptwriting platform</p>
+            </div>
+            <div class="project-card-back glass rounded-2xl p-6 flex flex-col justify-center items-center text-center bg-emerald-600/10">
+              <h3 class="font-display font-bold text-xl mb-4">ScriptForge</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Real-time collaborative writing environment for documentary teams with version control, research integration, and export pipelines.</p>
+              <div class="flex flex-wrap gap-2 justify-center mb-6">
+                <span class="px-3 py-1 text-xs font-mono bg-emerald-500/20 rounded-full">Next.js</span>
+                <span class="px-3 py-1 text-xs font-mono bg-emerald-500/20 rounded-full">Socket.io</span>
+                <span class="px-3 py-1 text-xs font-mono bg-emerald-500/20 rounded-full">PostgreSQL</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-emerald-500 font-mono text-sm hover:gap-4 transition-all">
+                View Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card h-96 group" data-cursor="hover">
+          <div class="project-card-inner">
+            <div class="project-card-front glass rounded-2xl p-6 flex flex-col">
+              <div class="flex-1 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl mb-4 flex items-center justify-center">
+                <i data-lucide="zap" class="w-16 h-16 text-amber-500/50"></i>
+              </div>
+              <div class="font-mono text-xs text-amber-500 uppercase tracking-wider mb-2">Performance</div>
+              <h3 class="font-display font-bold text-xl">Velocity CMS</h3>
+              <p class="text-sm text-gray-500 mt-2">Headless content management</p>
+            </div>
+            <div class="project-card-back glass rounded-2xl p-6 flex flex-col justify-center items-center text-center bg-amber-600/10">
+              <h3 class="font-display font-bold text-xl mb-4">Velocity CMS</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Edge-deployed headless CMS with sub-50ms global response times, built-in image optimization, and GraphQL API layer.</p>
+              <div class="flex flex-wrap gap-2 justify-center mb-6">
+                <span class="px-3 py-1 text-xs font-mono bg-amber-500/20 rounded-full">Go</span>
+                <span class="px-3 py-1 text-xs font-mono bg-amber-500/20 rounded-full">Redis</span>
+                <span class="px-3 py-1 text-xs font-mono bg-amber-500/20 rounded-full">CDN</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-amber-500 font-mono text-sm hover:gap-4 transition-all">
+                View Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card h-96 group" data-cursor="hover">
+          <div class="project-card-inner">
+            <div class="project-card-front glass rounded-2xl p-6 flex flex-col">
+              <div class="flex-1 bg-gradient-to-br from-rose-500/10 to-red-500/10 rounded-xl mb-4 flex items-center justify-center">
+                <i data-lucide="users" class="w-16 h-16 text-rose-500/50"></i>
+              </div>
+              <div class="font-mono text-xs text-rose-500 uppercase tracking-wider mb-2">Social Platform</div>
+              <h3 class="font-display font-bold text-xl">CommunityGrid</h3>
+              <p class="text-sm text-gray-500 mt-2">Localized community network</p>
+            </div>
+            <div class="project-card-back glass rounded-2xl p-6 flex flex-col justify-center items-center text-center bg-rose-600/10">
+              <h3 class="font-display font-bold text-xl mb-4">CommunityGrid</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Hyperlocal social platform connecting neighborhoods with event management, resource sharing, and emergency alerts.</p>
+              <div class="flex flex-wrap gap-2 justify-center mb-6">
+                <span class="px-3 py-1 text-xs font-mono bg-rose-500/20 rounded-full">React Native</span>
+                <span class="px-3 py-1 text-xs font-mono bg-rose-500/20 rounded-full">Firebase</span>
+                <span class="px-3 py-1 text-xs font-mono bg-rose-500/20 rounded-full">Maps API</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-rose-500 font-mono text-sm hover:gap-4 transition-all">
+                View Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card h-96 group" data-cursor="hover">
+          <div class="project-card-inner">
+            <div class="project-card-front glass rounded-2xl p-6 flex flex-col">
+              <div class="flex-1 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl mb-4 flex items-center justify-center">
+                <i data-lucide="box" class="w-16 h-16 text-cyan-500/50"></i>
+              </div>
+              <div class="font-mono text-xs text-cyan-500 uppercase tracking-wider mb-2">3D Experience</div>
+              <h3 class="font-display font-bold text-xl">Nebula Explorer</h3>
+              <p class="text-sm text-gray-500 mt-2">WebGL space visualization</p>
+            </div>
+            <div class="project-card-back glass rounded-2xl p-6 flex flex-col justify-center items-center text-center bg-cyan-600/10">
+              <h3 class="font-display font-bold text-xl mb-4">Nebula Explorer</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">Immersive 3D exploration of nebulae using procedural generation, volumetric rendering, and spatial audio in the browser.</p>
+              <div class="flex flex-wrap gap-2 justify-center mb-6">
+                <span class="px-3 py-1 text-xs font-mono bg-cyan-500/20 rounded-full">Three.js</span>
+                <span class="px-3 py-1 text-xs font-mono bg-cyan-500/20 rounded-full">WebGL</span>
+                <span class="px-3 py-1 text-xs font-mono bg-cyan-500/20 rounded-full">Web Audio</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-cyan-500 font-mono text-sm hover:gap-4 transition-all">
+                View Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="relative py-32 px-6 lg:px-12 reveal-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4">
+          <p class="font-mono text-xs text-indigo-500 uppercase tracking-widest mb-4">03 — Expertise</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-6">Technical<br>Proficiency</h2>
+          <p class="text-gray-500 dark:text-gray-400">
+            A comprehensive toolkit built over years of shipping production applications across diverse domains.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8 space-y-8">
+          <!-- Frontend -->
+          <div class="skill-category">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-display font-semibold text-lg">Frontend Development</h3>
+              <span class="font-mono text-xs text-gray-500">95%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="95"></div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">React</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">TypeScript</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Next.js</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Tailwind CSS</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Three.js</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">GSAP</span>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-category">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-display font-semibold text-lg">Backend Development</h3>
+              <span class="font-mono text-xs text-gray-500">90%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="90"></div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Node.js</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Python</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">PostgreSQL</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">MongoDB</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">GraphQL</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Redis</span>
+            </div>
+          </div>
+
+          <!-- DevOps -->
+          <div class="skill-category">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-display font-semibold text-lg">DevOps & Cloud</h3>
+              <span class="font-mono text-xs text-gray-500">85%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="85"></div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">AWS</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Docker</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Kubernetes</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">CI/CD</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Terraform</span>
+            </div>
+          </div>
+
+          <!-- Creative -->
+          <div class="skill-category">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-display font-semibold text-lg">Creative & Design</h3>
+              <span class="font-mono text-xs text-gray-500">88%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-width="88"></div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Figma</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Motion Design</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">UX Research</span>
+              <span class="px-3 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-800 rounded-full">Blender</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="relative py-32 px-6 lg:px-12 reveal-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <p class="font-mono text-xs text-indigo-500 uppercase tracking-widest mb-4">04 — Contact</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-6">Let's create<br>something <span class="gradient-text">extraordinary</span></h2>
+          <p class="text-gray-500 dark:text-gray-400 text-lg mb-12 max-w-md">
+            Have a project in mind? Looking for a technical partner? I'd love to hear about it.
+          </p>
+
+          <div class="space-y-6">
+            <a href="mailto:likhith200315@gmail.com" class="flex items-center gap-4 group" data-cursor="hover">
+              <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                <i data-lucide="mail" class="w-5 h-5 text-indigo-500"></i>
+              </div>
+              <div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider">Email</div>
+                <div class="font-display text-lg group-hover:text-indigo-500 transition-colors">likhith200315@gmail.com</div>
+              </div>
+            </a>
+
+            <a href="tel:+919019103254" class="flex items-center gap-4 group" data-cursor="hover">
+              <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                <i data-lucide="phone" class="w-5 h-5 text-indigo-500"></i>
+              </div>
+              <div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider">Phone</div>
+                <div class="font-display text-lg group-hover:text-indigo-500 transition-colors">+91 90191 03254</div>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full glass flex items-center justify-center">
+                <i data-lucide="map-pin" class="w-5 h-5 text-indigo-500"></i>
+              </div>
+              <div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider">Location</div>
+                <div class="font-display text-lg">India / Remote Worldwide</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 flex gap-4">
+            <a href="https://github.com/likhithk15" target="_blank" rel="noopener" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-indigo-500/20 transition-colors" data-cursor="hover" aria-label="GitHub">
+              <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-indigo-500/20 transition-colors" data-cursor="hover" aria-label="LinkedIn">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-indigo-500/20 transition-colors" data-cursor="hover" aria-label="Twitter">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-8 md:p-10">
+          <form id="contact-form" class="space-y-6" novalidate>
+            <div>
+              <label for="name" class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">Name</label>
+              <input type="text" id="name" name="name" required
+                class="form-input w-full px-4 py-3 rounded-xl bg-transparent border border-gray-200 dark:border-gray-700 focus:border-indigo-500 transition-colors"
+                placeholder="John Doe">
+              <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter your name</p>
+            </div>
+
+            <div>
+              <label for="email" class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">Email</label>
+              <input type="email" id="email" name="email" required
+                class="form-input w-full px-4 py-3 rounded-xl bg-transparent border border-gray-200 dark:border-gray-700 focus:border-indigo-500 transition-colors"
+                placeholder="john@example.com">
+              <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter a valid email</p>
+            </div>
+
+            <div>
+              <label for="subject" class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">Subject</label>
+              <select id="subject" name="subject" required
+                class="form-input w-full px-4 py-3 rounded-xl bg-transparent border border-gray-200 dark:border-gray-700 focus:border-indigo-500 transition-colors">
+                <option value="">Select a topic</option>
+                <option value="project">Project Collaboration</option>
+                <option value="freelance">Freelance Work</option>
+                <option value="consulting">Technical Consulting</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="error-msg text-red-500 text-xs mt-1 hidden">Please select a subject</p>
+            </div>
+
+            <div>
+              <label for="message" class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">Message</label>
+              <textarea id="message" name="message" rows="5" required
+                class="form-input w-full px-4 py-3 rounded-xl bg-transparent border border-gray-200 dark:border-gray-700 focus:border-indigo-500 transition-colors resize-none"
+                placeholder="Tell me about your project..."></textarea>
+              <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter a message</p>
+            </div>
+
+            <button type="submit" 
+              class="magnetic-btn w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-mono text-sm uppercase tracking-widest rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 flex items-center justify-center gap-2"
+              data-cursor="hover">
+              <span class="btn-text">Send Message</span>
+              <i data-lucide="send" class="w-4 h-4 btn-icon"></i>
+              <div class="btn-loader hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            </button>
+
+            <div id="form-success" class="hidden p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-600 dark:text-emerald-400 text-sm text-center">
+              <i data-lucide="check-circle" class="w-5 h-5 inline-block mr-2"></i>
+              Message sent successfully! I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative py-12 px-6 lg:px-12 border-t border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="font-display font-bold text-xl">
+        LD<span class="text-indigo-500">K</span>
+      </div>
+      <p class="font-mono text-xs text-gray-500">
+        © 2026 Likhith D Kunder. Crafted with precision & passion.
+      </p>
+      <button id="back-to-top" class="font-mono text-xs uppercase tracking-widest text-gray-500 hover:text-indigo-500 transition-colors flex items-center gap-2" data-cursor="hover">
+        Back to Top <i data-lucide="arrow-up" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    // ─── INITIALIZE LUCIDE ICONS ───
+    lucide.createIcons();
+
+    // ─── LENIS SMOOTH SCROLL ───
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Connect Lenis to GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // ─── CUSTOM CURSOR ───
+    const cursor = document.getElementById('cursor');
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+    if (!isTouchDevice) {
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateCursor() {
+        const dx = mouseX - cursorX;
+        const dy = mouseY - cursorY;
+        cursorX += dx * 0.15;
+        cursorY += dy * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      // Hover effects
+      document.querySelectorAll('[data-cursor="hover"]').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+      });
+
+      document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+      document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+    }
+
+    // ─── THEME TOGGLE ───
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Check system preference
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      // Recreate icons after theme change
+      setTimeout(() => lucide.createIcons(), 10);
+    });
+
+    // ─── MOBILE MENU ───
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenuBtn.children[0].style.transform = 'rotate(45deg) translateY(4px)';
+        mobileMenuBtn.children[1].style.transform = 'rotate(-45deg) translateY(-4px)';
+      } else {
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenuBtn.children[0].style.transform = '';
+        mobileMenuBtn.children[1].style.transform = '';
+      }
+    });
+
+    document.querySelectorAll('.mobile-menu-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenuBtn.children[0].style.transform = '';
+        mobileMenuBtn.children[1].style.transform = '';
+      });
+    });
+
+    // ─── PARTICLE SYSTEM ───
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = isTouchDevice ? 25 : 50;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.1;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+    initParticles();
+
+    function connectParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - distance / 150)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ─── GSAP ANIMATIONS ───
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Page loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+        
+        // Hero entrance animation
+        const heroTl = gsap.timeline();
+        
+        heroTl.to('.hero-kicker', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        })
+        .to('.hero-text', {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: 'power4.out'
+        }, '-=0.4')
+        .to('.hero-desc', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        }, '-=0.6')
+        .to('.hero-ctas', {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out'
+        }, '-=0.4');
+      }, 800);
+    });
+
+    // Set initial states for hero text
+    gsap.set('.hero-text', { y: 100, opacity: 0 });
+
+    // Section reveals
+    gsap.utils.toArray('.reveal-section').forEach(section => {
+      gsap.to(section, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // About text stagger
+    gsap.from('.about-text', {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 70%'
+      }
+    });
+
+    // Stats counter animation
+    gsap.from('.stat-item', {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.stat-item',
+        start: 'top 85%'
+      }
+    });
+
+    // Skill bars animation
+    gsap.utils.toArray('.skill-fill').forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      gsap.to(bar, {
+        width: width + '%',
+        duration: 1.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: bar,
+          start: 'top 85%'
+        }
+      });
+    });
+
+    // Parallax effect for hero
+    gsap.to('#hero .glass', {
+      y: -100,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // ─── MAGNETIC BUTTONS ───
+    if (!isTouchDevice) {
+      document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'translate(0, 0)';
+        });
+      });
+    }
+
+    // ─── CONTACT FORM VALIDATION ───
+    const contactForm = document.getElementById('contact-form');
+    
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      // Reset errors
+      contactForm.querySelectorAll('.error-msg').forEach(el => el.classList.add('hidden'));
+      contactForm.querySelectorAll('input, select, textarea').forEach(el => el.classList.remove('border-red-500'));
+
+      // Validate name
+      const name = document.getElementById('name');
+      if (!name.value.trim()) {
+        showError(name, 'Please enter your name');
+        valid = false;
+      }
+
+      // Validate email
+      const email = document.getElementById('email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        showError(email, 'Please enter a valid email');
+        valid = false;
+      }
+
+      // Validate subject
+      const subject = document.getElementById('subject');
+      if (!subject.value) {
+        showError(subject, 'Please select a subject');
+        valid = false;
+      }
+
+      // Validate message
+      const message = document.getElementById('message');
+      if (!message.value.trim()) {
+        showError(message, 'Please enter a message');
+        valid = false;
+      }
+
+      if (valid) {
+        // Show loading state
+        const btnText = contactForm.querySelector('.btn-text');
+        const btnIcon = contactForm.querySelector('.btn-icon');
+        const btnLoader = contactForm.querySelector('.btn-loader');
+        
+        btnText.textContent = 'Sending...';
+        btnIcon.classList.add('hidden');
+        btnLoader.classList.remove('hidden');
+        contactForm.querySelector('button[type="submit"]').disabled = true;
+
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // Show success
+        document.getElementById('form-success').classList.remove('hidden');
+        contactForm.reset();
+        
+        // Reset button
+        btnText.textContent = 'Send Message';
+        btnIcon.classList.remove('hidden');
+        btnLoader.classList.add('hidden');
+        contactForm.querySelector('button[type="submit"]').disabled = false;
+
+        // Hide success after 5 seconds
+        setTimeout(() => {
+          document.getElementById('form-success').classList.add('hidden');
+        }, 5000);
+      }
+    });
+
+    function showError(input, msg) {
+      input.classList.add('border-red-500');
+      input.nextElementSibling.textContent = msg;
+      input.nextElementSibling.classList.remove('hidden');
+    }
+
+    // ─── BACK TO TOP ───
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      lenis.scrollTo(0, { duration: 2 });
+    });
+
+    // ─── NAV SCROLL EFFECT ───
+    const nav = document.querySelector('nav');
+    let lastScroll = 0;
+
+    lenis.on('scroll', ({ scroll }) => {
+      if (scroll > 100) {
+        nav.classList.add('glass', 'backdrop-blur-xl');
+      } else {
+        nav.classList.remove('glass', 'backdrop-blur-xl');
+      }
+      lastScroll = scroll;
+    });
+
+    // ─── PREFERS REDUCED MOTION ───
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (prefersReducedMotion.matches) {
+      // Disable complex animations
+      gsap.globalTimeline.clear();
+      document.querySelectorAll('.reveal-section').forEach(el => {
+        el.style.opacity = 1;
+        el.style.transform = 'none';
+      });
+    }
+
+    // Listen for changes
+    prefersReducedMotion.addEventListener('change', (e) => {
+      if (e.matches) {
+        lenis.destroy();
+      }
+    });
+  </script>
 </body>
 </html>
